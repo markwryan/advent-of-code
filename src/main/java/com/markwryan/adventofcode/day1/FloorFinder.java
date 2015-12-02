@@ -57,10 +57,10 @@ public class FloorFinder {
     }
 
     /**
-     * FloorDirection tie together a direction (up, down) with the symbol if that direction as well as its numerical
-     * value in the case of the puzzle
+     * FloorDirection tie together a direction (up, down) with the symbol representation of that direction, as well as
+     * its numerical value in the case of the puzzle.
      */
-    private enum FloorDirection {
+    private static enum FloorDirection {
         UP('(',1),
         DOWN(')',-1);
 
@@ -72,6 +72,7 @@ public class FloorFinder {
             this.value = value;
         }
 
+        //Convert from Symbol to FloorDirection
         static FloorDirection fromSymbol(final char symbol) {
             for(FloorDirection direction : FloorDirection.values()) {
                 if(direction.symbol == symbol) {
