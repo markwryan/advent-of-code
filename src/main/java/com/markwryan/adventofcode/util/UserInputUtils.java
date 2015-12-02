@@ -5,14 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
+ * Assuming we will need to get input a lot. Pull out grabbing it from System.in so it can be reused.
+ *
  * Created by maryan on 12/2/15.
  */
 public class UserInputUtils {
     /**
      * Prompt a user for a single line of input. Return the user's input as a String.
      *
-     * @param prompt
-     * @return
+     * @param prompt - prompt to display to the user
+     * @return - User input as a String
      */
     public static String getUserInput(final String prompt) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

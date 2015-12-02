@@ -2,6 +2,9 @@ package com.markwryan.adventofcode.day1;
 
 import com.markwryan.adventofcode.util.UserInputUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * --- Day 1: Not Quite Lisp ---
  *
@@ -31,29 +34,56 @@ import com.markwryan.adventofcode.util.UserInputUtils;
  * ))) and )())()) both result in floor -3.
  * To what floor do the instructions take Santa?
  *
+ * --- Part Two ---
+ * Now, given the same instructions, find the position of the first character that causes him to enter the basement
+ * (floor -1). The first character in the instructions has position 1, the second character has position 2, and so on.
+ *
+ * For example:
+ *      ) causes him to enter the basement at character position 1.
+ *      ()()) causes him to enter the basement at character position 5.
+ *
+ * What is the position of the character that causes Santa to first enter the basement?
+ *
  * source: http://adventofcode.com/day/1
  */
 public class FloorFinder {
+    final static String FLOOR_KEY = "floor";
+    final static String BASEMENT_KEY = "basement";
+
     public static void main(String[] args) {
         String userInput = UserInputUtils.getUserInput("Please Enter the input: ");
-        System.out.println(calculateFloor(userInput.toCharArray()));
+        Map<String, Integer> results = calculateFloor(userInput.toCharArray());
+        System.out.println("Floor: " + results.get(FLOOR_KEY));
+        System.out.println("Position First Entered the Basement: " + results.get(BASEMENT_KEY));
     }
 
     /**
      * Loop through characters, map to their floor directions and add their values to the total. Return the total, which
      * is the current floor.
      *
-     * @param inputs
-     * @return
+     * @param inputs - user input as a character array
+     * @return Map of current floor and the position in which we first entered the basement.
      */
-    static int calculateFloor(char[] inputs) {
+    static Map<String, Integer> calculateFloor(char[] inputs) {
+        Map<String, Integer> results = new HashMap<String, Integer>();
         int currentFloor = 0;
+        int basementPosition = -1;
 
-        for(char input : inputs) {
+        for(int i = 0; i < inputs.length; i++) {
+            char input = inputs[i];
             FloorDirection direction = FloorDirection.fromSymbol(input);
             currentFloor += direction.value;
+
+            // If we entered the basement, set the basement position.
+            // Adding +1 to the index, since position is 1-based unlike indexes.
+            if(currentFloor == -1 && basementPosition < 0) {
+                basementPosition = i + 1;
+            }
         }
-        return currentFloor;
+        results.put(FLOOR_KEY, currentFloor);
+        results.put(BASEMENT_KEY, basementPosition);
+
+        return results;
     }
 
     /**
@@ -64,8 +94,8 @@ public class FloorFinder {
         UP('(',1),
         DOWN(')',-1);
 
-        private char symbol;
-        private int value;
+        private final char symbol;
+        private final int value;
 
         FloorDirection(final char symbol, final int value) {
             this.symbol = symbol;
