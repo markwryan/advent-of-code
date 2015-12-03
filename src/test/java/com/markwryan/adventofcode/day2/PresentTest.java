@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by mark on 12/2/15.
+ * Tests for the Present calculations.
  */
 public class PresentTest {
 

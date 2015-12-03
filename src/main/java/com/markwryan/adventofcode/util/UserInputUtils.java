@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 
 /**
  * Assuming we will need to get input a lot. Pull out grabbing it from System.in so it can be reused.
- *
- * Created by maryan on 12/2/15.
  */
 public class UserInputUtils {
     /**
