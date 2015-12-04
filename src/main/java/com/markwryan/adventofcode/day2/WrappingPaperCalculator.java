@@ -40,7 +40,7 @@ import java.util.stream.Collectors;
  * <p/>
  * source: http://adventofcode.com/day/2
  */
-public class WrappingPaperCalculator {
+class WrappingPaperCalculator {
 
     public static void main(String[] args) throws FileNotFoundException {
         URL input = ClassLoader.getSystemResource("input/day2.txt");
@@ -55,11 +55,11 @@ public class WrappingPaperCalculator {
      *
      * @param reader - BufferedReader with the input text as a file.
      */
-    static void calculateWrappingPaperDimensions(BufferedReader reader) {
+    private static void calculateWrappingPaperDimensions(BufferedReader reader) {
         int wrappingPaperTotal = 0;
         int ribbonTotal = 0;
 
-        List<Present> presents = reader.lines().map(l -> new Present(l)).collect(Collectors.toList());
+        List<Present> presents = reader.lines().map(Present::new).collect(Collectors.toList());
         for (Present present : presents) {
             wrappingPaperTotal += present.getNeededWrappingPaperInSquareFeet();
             ribbonTotal += present.getNeededRibbonInFeet();

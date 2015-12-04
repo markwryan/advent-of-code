@@ -35,14 +35,14 @@ import java.util.Map;
  * This year, how many houses receive at least one present?
  * <p/>
  * For example:
- *      ^v delivers presents to 3 houses, because Santa goes north, and then Robo-Santa goes south.
- *      ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
- *      ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
+ * ^v delivers presents to 3 houses, because Santa goes north, and then Robo-Santa goes south.
+ * ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
+ * ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
  * source: http://adventofcode.com/day/3
- *
+ * <p/>
  * Created by mark on 12/3/15.
  */
-public class PresentDeliveryTracker {
+class PresentDeliveryTracker {
     public static void main(String[] args) throws IOException {
         URL input = ClassLoader.getSystemResource("input/day3.txt");
 
@@ -63,9 +63,8 @@ public class PresentDeliveryTracker {
      * @param numberOfSantas - number of santas who will deliver presents
      * @param input          - input string of directions
      * @return - Number of distinct homes visited
-     * @throws IOException
      */
-    static int mapPresentDelivery(int numberOfSantas, String input) throws IOException {
+    static int mapPresentDelivery(int numberOfSantas, String input) {
         final Map<Point, Home> homes = new HashMap<>();
         final Point[] santas = new Point[numberOfSantas];
         final Point start = new Point(0, 0);
@@ -77,8 +76,7 @@ public class PresentDeliveryTracker {
 
         char[] directions = input.toCharArray();
         int santaIndex = 0;
-        for (int i = 0; i < directions.length; i++) {
-            char direction = directions[i];
+        for (char direction : directions) {
             Point location = getLocationFromString(santas[santaIndex], direction);
             addOrUpdateHome(homes, location);
             santas[santaIndex] = location;
@@ -94,8 +92,8 @@ public class PresentDeliveryTracker {
     /**
      * Update home's present count if it exits, create and add to the list if it does not yet exist.
      *
-     * @param homes
-     * @param location
+     * @param homes - List of homes that have gotten presents
+     * @param location - Current location which is getting a present
      */
     private static void addOrUpdateHome(final Map<Point, Home> homes, final Point location) {
         if (homes.containsKey(location)) {
@@ -108,9 +106,9 @@ public class PresentDeliveryTracker {
     /**
      * Update point based upon input character
      *
-     * @param point
-     * @param direction
-     * @return
+     * @param point - Originating position
+     * @param direction - Direction of movement as a character
+     * @return - Updated position
      */
     private static Point getLocationFromString(final Point point, final char direction) {
         int x = point.x;

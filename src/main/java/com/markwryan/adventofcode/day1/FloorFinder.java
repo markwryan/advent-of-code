@@ -65,7 +65,7 @@ public class FloorFinder {
      * @return Map of current floor and the position in which we first entered the basement.
      */
     static Map<String, Integer> calculateFloor(char[] inputs) {
-        Map<String, Integer> results = new HashMap<String, Integer>();
+        Map<String, Integer> results = new HashMap<>();
         int currentFloor = 0;
         int basementPosition = -1;
 

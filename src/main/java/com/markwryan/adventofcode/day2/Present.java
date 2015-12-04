@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * An individual present, which knows it's lenght, width and height. Also containing convenience methods to get
+ * An individual present, which knows it's length, width and height. Also containing convenience methods to get
  * information based on the dimensions.
  */
-public class Present {
-    final int length;
-    final int width;
-    final int height;
+class Present {
+    private final int length;
+    private final int width;
+    private final int height;
 
     /**
      * Asserts that the dimensions are a string with LxWxH e.g 2x4x6. Split and assign to the correct lengths.
@@ -41,7 +41,7 @@ public class Present {
     /**
      * For the list of lengths sorted from smallest to largest, return the area of the two smallest.
      *
-     * @return
+     * @return area of smallest side
      */
     int getAreaOfSmallestSide() {
         List<Integer> dimensions = getSortedSides();
@@ -49,10 +49,10 @@ public class Present {
     }
 
     /**
-     * For the list of lengths sorted from smallest to largest, return the perimiter of the side defined by the two
+     * For the list of lengths sorted from smallest to largest, return the perimeter of the side defined by the two
      * smallest.
      *
-     * @return the perimiter of the smallest side.
+     * @return the perimeter of the smallest side.
      */
     int getPerimeterOfSmallestSide() {
         List<Integer> dimensions = getSortedSides();
@@ -73,7 +73,7 @@ public class Present {
      */
     private List<Integer> getSortedSides() {
         List<Integer> dimensions = Arrays.asList(length, width, height);
-        dimensions.sort((a, b) -> Integer.compare(a, b));
+        dimensions.sort(Integer::compare);
         return dimensions;
     }
 

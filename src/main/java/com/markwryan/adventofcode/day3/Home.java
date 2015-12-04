@@ -1,9 +1,11 @@
 package com.markwryan.adventofcode.day3;
 
 /**
+ * Home which can receive presents from Santa.
+ *
  * Created by mark on 12/3/15.
  */
-public class Home {
+class Home {
     private int count;
 
     public Home() {
@@ -12,13 +14,5 @@ public class Home {
 
     public void updatePresentCount() {
         count++;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 }
