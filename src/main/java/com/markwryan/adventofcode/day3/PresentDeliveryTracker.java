@@ -39,7 +39,7 @@ import java.util.Map;
  *      ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
  *      ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
  * source: http://adventofcode.com/day/3
- * 
+ *
  * Created by mark on 12/3/15.
  */
 public class PresentDeliveryTracker {
@@ -50,7 +50,7 @@ public class PresentDeliveryTracker {
         String lines = reader.readLine();
         // 1 Santa
         int oneSantaNumberOfHomes = mapPresentDelivery(1, lines);
-        System.out.println("1 Santa deliver presnets to " + oneSantaNumberOfHomes + "homes.");
+        System.out.println("1 Santa deliver presnets to " + oneSantaNumberOfHomes + " homes.");
         // Santa and Robo-Santa
         int twoSantasNumberOfHomes = mapPresentDelivery(2, lines);
         System.out.println("2 Santas deliver presents to " + twoSantasNumberOfHomes + " homes.");
