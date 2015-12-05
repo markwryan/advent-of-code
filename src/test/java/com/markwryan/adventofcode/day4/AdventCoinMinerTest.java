@@ -8,7 +8,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by maryan on 12/4/15.
+ * Tests for day 4 (these run hella-slow)
  */
 public class AdventCoinMinerTest {
     @Test

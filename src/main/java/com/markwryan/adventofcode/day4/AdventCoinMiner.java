@@ -24,8 +24,8 @@ import java.util.Map;
  * Your puzzle input is ckczppom.
  * Created by maryan on 12/4/15.
  */
-public class AdventCoinMiner {
-    static final String HASH_KEY = "hash";
+class AdventCoinMiner {
+    private static final String HASH_KEY = "hash";
     static final String ANSWER_KEY = "answer";
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
@@ -42,7 +42,7 @@ public class AdventCoinMiner {
         Map<String, String> result = new HashMap<>();
         MessageDigest md = MessageDigest.getInstance("MD5");
         long i = 1;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         while (true) {
             sb.delete(0, sb.length());
