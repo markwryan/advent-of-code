@@ -1,6 +1,5 @@
 package com.markwryan.adventofcode.day14;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Map;
  */
 public class ReindeerOlympics {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         runRace(2503);
     }
 
